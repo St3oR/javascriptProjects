@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <p>Rock paper scissors:</p>
+
+    <button onclick="rock()">Rock</button>
+
+    <button onclick="paper()">Paper</button>
+
+    <button onclick="scissors()">Scissors</button>
+
+    <script>
+
+        const choices = ['Rock', 'Paper', 'Scissors'];
+
+        let computerH = "";
+
+
+        let userH = "something";
+
+        function rock() {
+            userH = 'Rock';
+            computerH = choices[Math.floor(Math.random() * choices.length)];
+            startGame();
+        }
+
+        function paper() {
+            userH = 'Paper';
+            computerH = choices[Math.floor(Math.random() * choices.length)];
+            startGame();
+        }
+
+        function scissors() {
+            userH = 'Scissors';
+            computerH = choices[Math.floor(Math.random() * choices.length)];
+            startGame();
+        }
+
+
+        function startGame() {
+            if (userH === computerH) {
+                console.log(`It's a draw, you both picked ${computerH}`)
+            } else if (userH === "Rock") {
+                if (computerH === "Paper") {
+                    console.log(`You lost! You picked ${userH} and computer picked ${computerH}`)
+                } else if (computerH === "Scissors") {
+                    console.log(`You won! You picked ${userH} and computer picked ${computerH}`)
+                }
+            } else if (userH === "Paper") {
+                if (computerH === "Scissors") {
+                    console.log(`You lost! You picked ${userH} and computer picked ${computerH}`)
+                } else if (computerH === "Rock") {
+                    console.log(`You won! You picked ${userH} and computer picked ${computerH}`)
+                }
+            } else if (userH === "Scissors") {
+                if (computerH === "Rock") {
+                    console.log(`You lost! You picked ${userH} and computer picked ${computerH}`)
+                } else if (computerH === "Paper") {
+                    console.log(`You won! You picked ${userH} and computer picked ${computerH}`)
+                }
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>
