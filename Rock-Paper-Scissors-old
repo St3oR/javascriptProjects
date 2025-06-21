@@ -18,50 +18,49 @@
 
         const choices = ['Rock', 'Paper', 'Scissors'];
 
-        let computerH = "";
 
-
-        let userH = "something";
+        function rando() {
+            let computerH = choices[Math.floor(Math.random() * choices.length)];
+            //console.log(computerH);
+            return computerH;
+        }
 
         function rock() {
-            userH = 'Rock';
-            computerH = choices[Math.floor(Math.random() * choices.length)];
-            startGame();
+            let userH = 'Rock';
+            startGame(userH, rando());
         }
 
         function paper() {
-            userH = 'Paper';
-            computerH = choices[Math.floor(Math.random() * choices.length)];
-            startGame();
+            let userH = 'Paper';
+            startGame(userH, rando());
         }
 
         function scissors() {
-            userH = 'Scissors';
-            computerH = choices[Math.floor(Math.random() * choices.length)];
-            startGame();
+            let userH = 'Scissors';
+            startGame(userH, rando());
         }
 
 
-        function startGame() {
+        function startGame(userH, computerH) {
             if (userH === computerH) {
-                console.log(`It's a draw, you both picked ${computerH}`)
+                alert(`It's a draw, you both picked ${computerH}`)
             } else if (userH === "Rock") {
                 if (computerH === "Paper") {
-                    console.log(`You lost! You picked ${userH} and computer picked ${computerH}`)
+                    alert(`You lost! You picked ${userH} and computer picked ${computerH}`)
                 } else if (computerH === "Scissors") {
-                    console.log(`You won! You picked ${userH} and computer picked ${computerH}`)
+                    alert(`You won! You picked ${userH} and computer picked ${computerH}`)
                 }
             } else if (userH === "Paper") {
                 if (computerH === "Scissors") {
-                    console.log(`You lost! You picked ${userH} and computer picked ${computerH}`)
+                    alert(`You lost! You picked ${userH} and computer picked ${computerH}`)
                 } else if (computerH === "Rock") {
-                    console.log(`You won! You picked ${userH} and computer picked ${computerH}`)
+                    alert(`You won! You picked ${userH} and computer picked ${computerH}`)
                 }
             } else if (userH === "Scissors") {
                 if (computerH === "Rock") {
-                    console.log(`You lost! You picked ${userH} and computer picked ${computerH}`)
+                    alert(`You lost! You picked ${userH} and computer picked ${computerH}`)
                 } else if (computerH === "Paper") {
-                    console.log(`You won! You picked ${userH} and computer picked ${computerH}`)
+                    alert(`You won! You picked ${userH} and computer picked ${computerH}`)
                 }
             }
         }
