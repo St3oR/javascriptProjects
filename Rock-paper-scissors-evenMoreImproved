@@ -52,11 +52,15 @@
             score.wins = 0;
             score.losses = 0;
             score.ties = 0;
-            document.getElementById('score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`; //insert score into Score paragraph
+            updateScoreElement();
             localStorage.setItem('score', JSON.stringify(score));
         }
 
-
+        
+        //insert score in score paragraph
+        function updateScoreElement() {
+            document.getElementById('score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`; //insert score into Score paragraph
+        }
 
         //function for random computer choice
 
@@ -104,17 +108,17 @@
             function result(result) {
                 if (result === 'win') {
                     document.getElementById('result').innerHTML = `You won! You picked ${userH} and computer picked ${computerH}`;
-                    document.getElementById('score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`; //insert score into Score paragraph
+                    updateScoreElement();
 
                 } else if (result === 'lose') {
 
                     document.getElementById('result').innerHTML = `You lost! You picked ${userH} and computer picked ${computerH}`;
-                    document.getElementById('score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`; //insert score into Score paragraph
+                    updateScoreElement();
 
                 } else if (result === 'draw') {
 
                     document.getElementById('result').innerHTML = `It's a draw, you both picked ${computerH}`;  
-                    document.getElementById('score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`; //insert score into Score paragraph
+                    updateScoreElement();
                 }
                 
                 //add to local storage the score after each game turning javascript object into JSON object
