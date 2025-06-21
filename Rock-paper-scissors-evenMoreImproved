@@ -14,6 +14,11 @@
 
     <button onclick="scissors()">Scissors</button>
 
+    <p>Result:  <span id="result"></span></p>
+
+    <p>Score:   <span id="score"></span></p>
+
+
     <button onclick="resetS()">Reset Score</button>
 
     <script>
@@ -21,10 +26,12 @@
         //global variables
         const choices = ['Rock', 'Paper', 'Scissors'];
 
-        //load back from localStorage the score turning the JSON object into javascript object
+        //load back from localStorage the score turning the JSON object into javascript object, if null then default 000 object
         const score = JSON.parse(localStorage.getItem('score')) || { wins: 0, losses: 0, ties: 0 };
 
-        //button functions
+        document.getElementById('score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`; //insert score into Score paragraph
+
+        //button function
 
         function rock() {
             let userH = 'Rock';
@@ -45,11 +52,8 @@
             score.wins = 0;
             score.losses = 0;
             score.ties = 0;
-            alert("Score reset"
-                + `\nWins: ${score.wins}`
-                + `\nLosses: ${score.losses}`
-                + `\nTies: ${score.ties}`
-            );
+            document.getElementById('score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`; //insert score into Score paragraph
+            localStorage.setItem('score', JSON.stringify(score));
         }
 
 
@@ -99,28 +103,23 @@
 
             function result(result) {
                 if (result === 'win') {
-                    alert(`You won! You picked ${userH} and computer picked ${computerH}`
-                            + `\nWins: ${score.wins}`
-                            + `\nLosses: ${score.losses}`
-                            + `\nTies: ${score.ties}`
-                        )
+                    document.getElementById('result').innerHTML = `You won! You picked ${userH} and computer picked ${computerH}`;
+                    document.getElementById('score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`; //insert score into Score paragraph
+
                 } else if (result === 'lose') {
-                    alert(`You lost! You picked ${userH} and computer picked ${computerH}`
-                            + `\nWins: ${score.wins}`
-                            + `\nLosses: ${score.losses}`
-                            + `\nTies: ${score.ties}`
-                        )
+
+                    document.getElementById('result').innerHTML = `You lost! You picked ${userH} and computer picked ${computerH}`;
+                    document.getElementById('score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`; //insert score into Score paragraph
+
                 } else if (result === 'draw') {
 
-                    alert(`It's a draw, you both picked ${computerH}`
-                            + `\nWins: ${score.wins}`
-                            + `\nLosses: ${score.losses}`
-                            + `\nTies: ${score.ties}`
-                        )
+                    document.getElementById('result').innerHTML = `It's a draw, you both picked ${computerH}`;  
+                    document.getElementById('score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`; //insert score into Score paragraph
                 }
                 
                 //add to local storage the score after each game turning javascript object into JSON object
                 localStorage.setItem('score', JSON.stringify(score));
+
             }
         }
 
