@@ -14,6 +14,8 @@
 
     <button onclick="scissors()">Scissors</button>
 
+    <button onclick="resetS()">Reset Score</button>
+
     <script>
 
         const choices = ['Rock', 'Paper', 'Scissors'];
@@ -30,6 +32,17 @@
             wins: 0,
             losses: 0,
             ties: 0
+        }
+
+        function resetS() {
+            score.wins = 0;
+            score.losses = 0;
+            score.ties = 0;
+            alert("Score reset"
+                + `\nWins: ${score.wins}`
+                + `\nLosses: ${score.losses}`
+                + `\nTies: ${score.ties}`
+            );
         }
 
 
