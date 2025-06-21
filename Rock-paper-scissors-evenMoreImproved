@@ -21,11 +21,8 @@
         //global variables
         const choices = ['Rock', 'Paper', 'Scissors'];
 
-        const score = {
-            wins: 0,
-            losses: 0,
-            ties: 0
-        }
+        //load back from localStorage the score turning the JSON object into javascript object
+        const score = JSON.parse(localStorage.getItem('score')) || { wins: 0, losses: 0, ties: 0 };
 
         //button functions
 
@@ -98,7 +95,7 @@
                     result('win');
                 }
             }
-
+            
 
             function result(result) {
                 if (result === 'win') {
@@ -115,12 +112,15 @@
                         )
                 } else if (result === 'draw') {
 
-                alert(`It's a draw, you both picked ${computerH}`
-                        + `\nWins: ${score.wins}`
-                        + `\nLosses: ${score.losses}`
-                        + `\nTies: ${score.ties}`
-                    )
+                    alert(`It's a draw, you both picked ${computerH}`
+                            + `\nWins: ${score.wins}`
+                            + `\nLosses: ${score.losses}`
+                            + `\nTies: ${score.ties}`
+                        )
                 }
+                
+                //add to local storage the score after each game turning javascript object into JSON object
+                localStorage.setItem('score', JSON.stringify(score));
             }
         }
 
