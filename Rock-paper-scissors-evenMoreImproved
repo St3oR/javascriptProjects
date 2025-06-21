@@ -18,15 +18,8 @@
 
     <script>
 
+        //global variables
         const choices = ['Rock', 'Paper', 'Scissors'];
-
-
-        function rando() {
-            let computerH = choices[Math.floor(Math.random() * choices.length)];
-            //console.log(computerH);
-            return computerH;
-        }
-
 
         const score = {
             wins: 0,
@@ -34,17 +27,7 @@
             ties: 0
         }
 
-        function resetS() {
-            score.wins = 0;
-            score.losses = 0;
-            score.ties = 0;
-            alert("Score reset"
-                + `\nWins: ${score.wins}`
-                + `\nLosses: ${score.losses}`
-                + `\nTies: ${score.ties}`
-            );
-        }
-
+        //button functions
 
         function rock() {
             let userH = 'Rock';
@@ -61,6 +44,30 @@
             startGame(userH, rando());
         }
 
+        function resetS() {
+            score.wins = 0;
+            score.losses = 0;
+            score.ties = 0;
+            alert("Score reset"
+                + `\nWins: ${score.wins}`
+                + `\nLosses: ${score.losses}`
+                + `\nTies: ${score.ties}`
+            );
+        }
+
+
+
+        //function for random computer choice
+
+        function rando() {
+            let computerH = choices[Math.floor(Math.random() * choices.length)];
+            //console.log(computerH);
+            return computerH;
+        }
+
+
+
+        //game logic and scoring logic
 
         function startGame(userH, computerH) {
             if (userH === computerH) {
@@ -92,6 +99,7 @@
                 }
             }
 
+
             function result(result) {
                 if (result === 'win') {
                     alert(`You won! You picked ${userH} and computer picked ${computerH}`
@@ -115,8 +123,6 @@
                 }
             }
         }
-
-
 
 
     </script>
