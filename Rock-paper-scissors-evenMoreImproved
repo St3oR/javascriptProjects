@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <p>Rock paper scissors:</p>
+
+    <button onclick="rock()">Rock</button>
+
+    <button onclick="paper()">Paper</button>
+
+    <button onclick="scissors()">Scissors</button>
+
+    <script>
+
+        const choices = ['Rock', 'Paper', 'Scissors'];
+
+
+        function rando() {
+            let computerH = choices[Math.floor(Math.random() * choices.length)];
+            //console.log(computerH);
+            return computerH;
+        }
+
+
+        const score = {
+            wins: 0,
+            losses: 0,
+            ties: 0
+        }
+
+
+        function rock() {
+            let userH = 'Rock';
+            startGame(userH, rando());
+        }
+
+        function paper() {
+            let userH = 'Paper';
+            startGame(userH, rando());
+        }
+
+        function scissors() {
+            let userH = 'Scissors';
+            startGame(userH, rando());
+        }
+
+
+        function startGame(userH, computerH) {
+            if (userH === computerH) {
+                score.ties++;
+                result('draw');
+            } else if (userH === "Rock") {
+                if (computerH === "Paper") {
+                    score.losses++;
+                    result('lose');
+                } else if (computerH === "Scissors") {
+                    score.wins++;
+                    result('win');
+                }
+            } else if (userH === "Paper") {
+                if (computerH === "Scissors") {
+                    score.losses++;
+                    result('lose');
+                } else if (computerH === "Rock") {
+                    score.wins++;
+                    result('win');
+                }
+            } else if (userH === "Scissors") {
+                if (computerH === "Rock") {
+                    score.losses++;
+                    result('lose');
+                } else if (computerH === "Paper") {
+                    score.wins++;
+                    result('win');
+                }
+            }
+
+            function result(result) {
+                if (result === 'win') {
+                    alert(`You won! You picked ${userH} and computer picked ${computerH}`
+                            + `\nWins: ${score.wins}`
+                            + `\nLosses: ${score.losses}`
+                            + `\nTies: ${score.ties}`
+                        )
+                } else if (result === 'lose') {
+                    alert(`You lost! You picked ${userH} and computer picked ${computerH}`
+                            + `\nWins: ${score.wins}`
+                            + `\nLosses: ${score.losses}`
+                            + `\nTies: ${score.ties}`
+                        )
+                } else if (result === 'draw') {
+
+                alert(`It's a draw, you both picked ${computerH}`
+                        + `\nWins: ${score.wins}`
+                        + `\nLosses: ${score.losses}`
+                        + `\nTies: ${score.ties}`
+                    )
+                }
+            }
+        }
+
+
+
+
+    </script>
+</body>
+</html>
