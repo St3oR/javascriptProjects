@@ -1,0 +1,10 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.task-item {
+    display: flex; /* Use flexbox to arrange children in a row */
+    align-items: center; /* Vertically align items in the middle */
+    gap: 10px; /* Space between items */
+    margin-bottom: 8px; /* Space between task items */
+}
