@@ -1,8 +1,9 @@
      
-//  Simple to do task app that stores in localstorage tasks with date
+    //  Simple to do task app that stores in localstorage tasks with date
+     
 
-
-const list =  JSON.parse(localStorage.getItem('list'));
+let list = [];
+list =  JSON.parse(localStorage.getItem('list'));
 
 
 listTasks();
@@ -11,20 +12,18 @@ listTasks();
 
 function addTask() {
 
-    let inputTask = document.getElementById("inputTask").value;
+    let taskName = document.getElementById("inputTask").value;
 
-    let inputDate = document.getElementById("inputDate").value;
-
-
-    list[inputTask] = inputDate;
+    let taskDate = document.getElementById("inputDate").value;
 
 
-    inputTask = '';
+    list.push({taskName, taskDate});
+
+    document.getElementById("inputTask").value = '';
 
     listTasks();
 
     localStorage.setItem('list', JSON.stringify(list));
-
 
 }
 
@@ -32,9 +31,15 @@ function listTasks() {
 
     let outputList = '';
         
-    for (const task in list) {
-        let taskDelete = task;
-        outputList += `<p>${task} - ${list[task]}    <button onclick="deleteTask('${taskDelete}')">Delete</button></p>`;
+    for (let i = 0;  i < list.length; i++) {
+
+        const listObj = list[i];
+        const {taskName, taskDate} = listObj;        
+        let taskDelete = i;
+
+        outputList += `<div class="task-item"><div>${taskName}</div>
+            <div> ${taskDate}</div>
+            <button onclick="deleteTask('${taskDelete}')">Delete</button></div>`;
 
     }
     document.getElementById("list").innerHTML = outputList || 'No tasks';
@@ -43,8 +48,7 @@ function listTasks() {
 
 
 function deleteTask(taskDelete) {
-
-    delete list[taskDelete];
+    list.splice(taskDelete, 1);
     listTasks();
     localStorage.setItem('list', JSON.stringify(list));
 }
